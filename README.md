@@ -1,10 +1,10 @@
 # What are (runtime) presets?
 
-Presets are a way to store a components values to an asset file, that can be reapplied to other components either in the [editor](https://docs.unity3d.com/Manual/Presets.html) or by [scripting](https://docs.unity3d.com/2018.2/Documentation/ScriptReference/Presets.Preset.html).
+Presets are a way to store a components values to an asset file that can be reapplied to other components either in the [editor](https://docs.unity3d.com/Manual/Presets.html) or by [scripting](https://docs.unity3d.com/2018.2/Documentation/ScriptReference/Presets.Preset.html).
 
 Presets have one downside though: They are placed in the `UnityEditor` namespace and can therefore not be used in your compiled game. Loading presets at runtime is unfourtunately not possible. This plug-in intends solve this problem.
 
-Runtime presets an alternative to the Unity presets by storing components as prefabs that can then be reapplied at runtime. Using runtime presets is nearly identical to using the default Unity presets:
+Runtime presets are an alternative to the Unity presets by storing components as prefabs that can then be reapplied at runtime. Using runtime presets is nearly identical to using the default Unity presets:
 
 ```csharp
 public class ApplyPreset : MonoBehaviour
@@ -27,7 +27,7 @@ After downloading and importing the package, you will find a new entry `Create R
 
 ## Creating a runtime preset
 
-Open the gear menu ![alt text](https://github.com/Moolt/UnityRuntimePresets/raw/master/Documentation/gear_icon.png "gear icon") on any component in a prefab or scene and click `Create Runtime Preset`.
+Open the gear menu ![alt text](https://github.com/Moolt/UnityRuntimePresets/raw/master/Documentation/gear_icon.png "gear icon") on any GameObjects component and click `Create Runtime Preset`.
 
 ![alt text](https://raw.githubusercontent.com/Moolt/UnityRuntimePresets/master/Documentation/creating_preset.png "creating runtime preset")
 
@@ -35,7 +35,7 @@ The plug-in will then create the preset in the `Assets` folder. A newly created 
 
 ![alt text](https://raw.githubusercontent.com/Moolt/UnityRuntimePresets/master/Documentation/preset_prefab.png "preset file")
 
-The preset is simply an prefab with a copy of your selected component. It also has an additional component called `Preset`. Keep this in mind as we'll need it in the next step.
+The preset is simply a prefab with a copy of your selected component. It also has an additional component called `Preset`. Keep this in mind as we'll need it in the next step.
 
 ![alt text](https://raw.githubusercontent.com/Moolt/UnityRuntimePresets/master/Documentation/preset_component.png "preset detail")
 
