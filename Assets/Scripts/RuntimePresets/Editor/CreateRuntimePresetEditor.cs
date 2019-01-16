@@ -15,7 +15,7 @@ namespace RuntimePresets
             var dummyObject = new GameObject();
 
             var targetComponent = dummyObject.GetOrCreateComponent(sourceComponent.GetType());
-            var runtimePreset = dummyObject.GetOrCreateComponent<RuntimePreset>();
+            var runtimePreset = dummyObject.GetOrCreateComponent<Preset>();
             runtimePreset.TargetComponent = targetComponent;
 
             UnityEditorInternal.ComponentUtility.CopyComponent(sourceComponent);
@@ -23,8 +23,6 @@ namespace RuntimePresets
 
             var prefab = PrefabUtility.CreatePrefab("Assets/New Preset.prefab", dummyObject);
             Object.DestroyImmediate(dummyObject);
-            //TODO: Implement object picker
-            //EditorGUIUtility.ShowObjectPicker<GameObject>(null, false, string.Empty, 0);
         }
     }
 }

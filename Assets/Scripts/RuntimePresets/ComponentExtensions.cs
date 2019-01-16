@@ -15,11 +15,12 @@ namespace RuntimePresets
             {"mesh", "sharedMesh"}
         };
 
-        public static T TransferValuesFrom<T>(this Component comp, T other) where T : Component
+        public static T TransferValuesFrom<T>(this Component comp, T other, bool? considerBaseClasses = null) where T : Component
         {
+            var conditionalFlags = (considerBaseClasses ?? false) ? BindingFlags.FlattenHierarchy : BindingFlags.DeclaredOnly;
             Type type = comp.GetType(); //type of the copy
             if (type != other.GetType()) return null; // type mis-match
-            BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Default | BindingFlags.FlattenHierarchy;
+            BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Default | conditionalFlags;
             PropertyInfo[] pinfos = type.GetProperties(flags);
 
             //Handle variables
