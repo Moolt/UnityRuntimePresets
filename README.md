@@ -94,5 +94,5 @@ public class CreatePreset : MonoBehaviour
 }
 ```
 
-The examples might be a bit forced, but I often find myself in more complex situations where runtime prefabs can be a real life saver.
+The examples might be a bit forced, but I often find myself in more complex situations where runtime presets can be a real life saver.
 I hope I can save you some time with this plug-in. Feel free to contact me if you have any questions.
