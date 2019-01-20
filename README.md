@@ -70,7 +70,7 @@ After compiling the script you can now set the preset and reference the light co
 
 ## Creating presets during runtime
 
-Presets can also be created during runtime. You will need any component to initialize the preset with. The present can then be used to apply the values to any component of the same type.
+Presets can also be created during runtime. You will need any component to initialize the preset with. The preset can then be used to apply the values to any component of the same type.
 
 ```csharp
 public class CreatePreset : MonoBehaviour
