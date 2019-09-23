@@ -222,11 +222,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 11500000, guid: b4b1473fced1a3348b5431c7e531de8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4988a837f84971d479074ae0315de3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   otherComponent: {fileID: 1991243004}
-  removeTemporaryPresetObject: 1
 --- !u!1 &1084344738
 GameObject:
   m_ObjectHideFlags: 0
