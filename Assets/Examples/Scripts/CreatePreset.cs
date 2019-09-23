@@ -1,17 +1,22 @@
 ﻿using RuntimePresets;
 using UnityEngine;
 
-public class CreatePreset : MonoBehaviour
+public class CreatePreset<T> : MonoBehaviour
+    where T : Component
 {
-    public Light otherLight;
+    public T otherComponent;
+    public bool removeTemporaryPresetObject = true;
     private IPreset _preset;
 
     void Start()
     {
-        var light = GetComponent<Light>();
-        _preset = Preset.From(otherLight);
-        _preset.ApplyTo(light);
+        var thisComponent = GetComponent<T>();
+        _preset = Preset.From(otherComponent);
+        _preset.ApplyTo(thisComponent);
         //Removes the temporary object created to store the runtime preset
-        _preset.Free();        
+        if(removeTemporaryPresetObject)
+        {
+            _preset.Free();
+        }
     }
 }
