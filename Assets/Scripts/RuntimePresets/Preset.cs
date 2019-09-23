@@ -23,9 +23,9 @@ namespace RuntimePresets
         public static Preset From<T>(T component) where T : Component
         {
             var componentContainer = new GameObject($"tmp_{Mathf.Abs(component.GetInstanceID())}");
-
             var preset = componentContainer.GetOrCreateComponent<Preset>();
             var componentCopy = componentContainer.GetOrCreateComponent<T>();
+            
             componentCopy.TransferValuesFrom(component);
             preset.TargetComponent = componentCopy;
             componentContainer.SetActive(false);
