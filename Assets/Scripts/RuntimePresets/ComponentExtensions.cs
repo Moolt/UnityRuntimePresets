@@ -15,22 +15,30 @@ namespace RuntimePresets
             {"mesh", "sharedMesh"}
         };
 
-        public static T TransferValuesFrom<T>(this Component comp, T other, bool? considerBaseClasses = null) where T : Component
+        public static T TransferValuesFrom<T>(this Component comp, T other, bool considerBaseClasses = true) where T : Component
         {
-            var conditionalFlags = (considerBaseClasses ?? false) ? BindingFlags.FlattenHierarchy : BindingFlags.DeclaredOnly;
-            Type type = comp.GetType(); //type of the copy
-            if (type != other.GetType()) return null; // type mis-match
+            var conditionalFlags = considerBaseClasses ? BindingFlags.FlattenHierarchy : BindingFlags.DeclaredOnly;
+            
+            // Type of the copy
+            Type type = comp.GetType();
+            
+            // Type mismatch
+            if (type != other.GetType())
+            {
+                return null;
+            }
+
             BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Default | conditionalFlags;
-            PropertyInfo[] pinfos = type.GetProperties(flags);
+            PropertyInfo[] propertyInfos = type.GetProperties(flags);
 
             //Handle variables
-            foreach (var pinfo in pinfos)
+            foreach (var pinfo in propertyInfos)
             {
                 if (pinfo.CanWrite)
                 {
                     try
                     {
-                        //Ignore obsolete variables to avoid editor warnings
+                        // Ignore obsolete variables to avoid editor warnings
                         if (HasAnnotation<ObsoleteAttribute>(pinfo) || HasAnnotation<NotSupportedException>(pinfo) || HasAnnotation<System.ComponentModel.EditorBrowsableAttribute>(pinfo))
                         {
                             continue;
@@ -49,7 +57,7 @@ namespace RuntimePresets
                 }
             }
 
-            //Handle properties
+            // Handle properties
             FieldInfo[] finfos = type.GetFields(flags);
 
             foreach (var finfo in finfos)
